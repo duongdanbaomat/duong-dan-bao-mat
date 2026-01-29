@@ -13,6 +13,7 @@ function main() {
   const form = document.querySelector("#password-form");
   const passwordPrompt = form.querySelector("#password");
   const unlockButton = form.querySelector("button[type='submit']");
+  const loadingIndicator = document.getElementById("loading-indicator");
 
   passwordPrompt.addEventListener("input", async () => {
     const password = passwordPrompt.value;
@@ -33,7 +34,11 @@ function main() {
     e.preventDefault();
     const password = passwordPrompt.value;
     const url = await api.decrypt(encrypted, password, salt, iv);
-    window.location.href = url;
+
+    window.location.replace(url);
+    loadingIndicator.style.display = "block";
+    passwordPrompt.disabled = true;
+    unlockButton.disabled = true;
   });
 }
 
