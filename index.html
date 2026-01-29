@@ -6,53 +6,43 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=yes"
     />
-    <link rel="icon" type="image/x-icon" href="assets/favicon.svg" />
+
     <title>Đường dẫn bảo mật</title>
 
-    <link rel="stylesheet" href="style.css" type="text/css" />
+    <link rel="icon" type="image/x-icon" href="assets/favicon.svg" />
+    <link rel="stylesheet" href="styles/style.css" type="text/css" />
 
-    <script type="text/javascript" src="b64.js"></script>
-    <script type="text/javascript" src="api.js"></script>
-    <script type="text/javascript" src="index.js"></script>
+    <script type="module" src="scripts/index.js"></script>
   </head>
 
-  <body onload="main()">
+  <body>
     <noscript>
-      <div class="red-border">
-        <p>
-          If you are seeing this, it means that you have JavaScript disabled.
-          Please enable JavaScript to access the locked link.
-        </p>
-
-        <p>
-          This application is entirely programmed in JavaScript. This was done
-          intentionally, so that all encryption and decryption happens
-          client-side. This means the code runs as a distributed application,
-          relying only on GitHub Pages for infrastructure. It also means that no
-          data about locked links is ever stored on a server. The code is
-          designed to be auditable so users can investigate what is happening
-          behind the scenes.
-        </p>
-
-        <p>
-          If you still want to run the application, I encourage you to clone the
-          <a href="https://github.com/jstrieb/link-lock"
-            >source code on GitHub</a
-          >. That way you can disable JavaScript only for trusted files on your
-          local machine.
-        </p>
-      </div>
+      <p role="alert" aria-live="assertive">
+        Trình duyệt của bạn không hỗ trợ JavaScript hoặc JavaScript đã bị vô
+        hiệu hóa. Vui lòng bật JavaScript để sử dụng tính năng này.
+      </p>
     </noscript>
 
-    <div class="form" style="display: none">
-      <p>Please enter the password to unlock the link.</p>
-      <p id="hint"></p>
+    <header>
+      <h1 class="visually-hidden">Đường dẫn bảo mật</h1>
+    </header>
+    <main>
+      <section id="instructions">
+        <h2>Vui lòng nhập mật khẩu để mở khóa liên kết.</h2>
+        <p class="visually-hidden">
+          Mật khẩu được cung cấp bởi người tạo liên kết.
+        </p>
+      </section>
 
       <hr />
 
-      <label for="password">password</label>
-      <input type="password" id="password" autofocus />
-      <button id="unlockbutton">Unlock link</button>
-    </div>
+      <form id="password-form">
+        <div class="field">
+          <label for="password">MẬT KHẨU</label>
+          <input type="password" id="password" autofocus />
+        </div>
+        <button type="submit" disabled>Mở khóa</button>
+      </form>
+    </main>
   </body>
 </html>
